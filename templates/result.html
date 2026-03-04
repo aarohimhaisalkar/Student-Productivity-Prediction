@@ -3,6 +3,7 @@
 <head>
     <title>Prediction Result</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
 </head>
 <body>
 
@@ -15,17 +16,16 @@
         {{ prediction }}
     </div>
 
-    <a href="/">Predict Again</a>
+    <!-- Update this link to point back to the form page -->
+    <a href="{{ url_for('form_page') }}" class="btn">Predict Again</a>
     
     <h3>3 Skills Need To Be Improved:</h3>
 
-<ul>
-    {% for skill in skills %}
-        <li>{{ skill }}</li>
-    {% endfor %}
-</ul>
-
-
+    <ul>
+        {% for skill in skills %}
+            <li>{{ skill }}</li>
+        {% endfor %}
+    </ul>
 </div>
 
 </body>

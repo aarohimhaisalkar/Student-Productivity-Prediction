@@ -1,70 +1,191 @@
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to right, grey, #0684fb);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* ============================= */
+/* Global Reset */
+/* ============================= */
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
 }
+
+body {
+    background-color: #f9fafb;
+}
+
+/* ============================= */
+/* Layout */
+/* ============================= */
 
 .container {
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    width: 400px;
+    display: flex;
+}
+
+/* ============================= */
+/* Sidebar */
+/* ============================= */
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background: #e0e0e0;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 0.3s ease;
+}
+
+.sidebar.hide {
+    left: -220px;
+}
+
+.sidebar h2 {
     text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    margin-bottom: 30px;
+    color: #1f2937;
 }
 
-h1 {
-    margin-bottom: 20px;
-}
-
-input {
-    width: 90%;
-    padding: 10px;
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    color: #111827;
+    padding: 12px;
     margin: 8px 0;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    transition: 0.2s ease;
 }
 
-button {
-    padding: 10px 20px;
-    border: none;
-    background: #0684fb;
+.sidebar a:hover {
+    background: #d1d5db;
+}
+
+/* ============================= */
+/* Toggle Button */
+/* ============================= */
+
+.toggle-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 20px;
+    background: #4e73df;
     color: white;
-    border-radius: 8px;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
     cursor: pointer;
+    z-index: 1000;
+}
+
+/* ============================= */
+/* Main Content */
+/* ============================= */
+
+.main-content {
+    margin-left: 220px;
+    width: 100%;
+    transition: 0.3s ease;
+}
+
+.main-content.expand {
+    margin-left: 0;
+}
+
+/* ============================= */
+/* Hero Section */
+/* ============================= */
+
+.hero {
+    background: linear-gradient(to right, #4e73df, #66c666);
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.btn {
+    background: white;
+    color: #4e73df;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #e5e7eb;
+}
+
+/* ============================= */
+/* Sections */
+/* ============================= */
+
+.section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.section p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.light {
+    background: #f3f4f6;
+}
+
+/* ============================= */
+/* Cards */
+/* ============================= */
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    width: 220px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+/* ============================= */
+/* Footer */
+/* ============================= */
+
+.footer {
+    background: #1f2937;
+    color: white;
+    text-align: center;
+    padding: 25px 10px;
+    margin-top: 60px;
+}
+
+.footer p {
+    margin: 5px 0;
     font-size: 14px;
 }
-
-button:hover {
-    background: #00c6ff;
-}
-
-.result {
-    font-size: 28px;
-    font-weight: bold;
-    color: #4facfe;
-    margin: 20px 0;
-}
-
-a {
-    text-decoration: none;
-    color: #4facfe;
-    font-weight: bold;
-}
-
-li{
-    list-style: none;
-    align-items: normal;
-}
-
-ul {
-    text-align: left;
-    margin-left: 20px;   /* adjust this value if needed */
-}
-
-
-

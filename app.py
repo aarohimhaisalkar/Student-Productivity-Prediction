@@ -1,14 +1,19 @@
 from flask import Flask, render_template, request
 import pickle
 import numpy as np
+import os
 
 app = Flask(__name__)
 
+# -----------------------------
+# Load Trained Model
+# -----------------------------
 model = pickle.load(open("student_model.pkl", "rb"))
 
-# -----------------------------------
+
+# -----------------------------
 # Skill Suggestion Function
-# -----------------------------------
+# -----------------------------
 def suggest_skills(study_hours,
                    distraction_level,
                    sleep_hours,
@@ -19,7 +24,6 @@ def suggest_skills(study_hours,
 
     skills = []
 
-    # ---- Define Ideal Performance Ranges ----
     excellent_conditions = (
         study_hours >= 4 and
         distraction_level <= 4 and
@@ -30,11 +34,8 @@ def suggest_skills(study_hours,
         daily_goal_planning == 1
     )
 
-    # If all conditions are good/excellent
     if excellent_conditions:
         return ["Excellent Performance! No need to improve any skills 🎉"]
-
-    # ---- Improvement Suggestions ----
 
     if study_hours < 4:
         skills.append("Increase Daily Study Hours")
@@ -57,26 +58,35 @@ def suggest_skills(study_hours,
     if class_participation_level < 6:
         skills.append("Improve Class Participation")
 
-    # Return only top 3 most important improvements
     return skills[:3]
-    
 
 
-# -----------------------------------
-# Home Route
-# -----------------------------------
+# -----------------------------
+# Home Page
+# -----------------------------
 @app.route("/")
 def home():
+    return render_template("home.html")
+
+
+# -----------------------------
+# Show Form Page (GET)
+# -----------------------------
+@app.route("/predict", methods=["GET"])
+def show_form():
     return render_template("index.html")
 
+@app.route('/form')
+def form_page():
+    return render_template('index.html')  # renders the form
 
-# -----------------------------------
-# Prediction Route
-# -----------------------------------
+
+# -----------------------------
+# Handle Prediction (POST)
+# -----------------------------
 @app.route("/predict", methods=["POST"])
 def predict():
 
-    # 🔹 Get form inputs
     study_hours = float(request.form["study_hours"])
     distraction_level = float(request.form["distraction_level"])
     sleep_hours = float(request.form["sleep_hours"])
@@ -85,8 +95,7 @@ def predict():
     class_participation_level = float(request.form["class_participation_level"])
     daily_goal_planning = int(request.form["daily_goal_planning"])
 
-    # 🔹 Create feature list for model
-    features = [
+    features = np.array([[ 
         study_hours,
         distraction_level,
         sleep_hours,
@@ -94,11 +103,10 @@ def predict():
         assignment_completion_rate,
         class_participation_level,
         daily_goal_planning
-    ]
+    ]])
 
-    prediction = model.predict([features])
+    prediction = model.predict(features)
 
-    # 🔹 Get skill suggestions
     skills = suggest_skills(
         study_hours,
         distraction_level,
@@ -116,8 +124,9 @@ def predict():
     )
 
 
-import os
-
+# -----------------------------
+# Run App (Deployment Ready)
+# -----------------------------
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)

@@ -1,0 +1,125 @@
+/* form.css */
+
+/* BODY FOR FORM PAGE */
+body {
+    background: linear-gradient(to right, #0684fb,#EE82EE);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* FORM CONTAINER */
+.container {
+    background: white;
+    padding: 40px 35px;        /* increased padding for better spacing */
+    border-radius: 15px;
+    width: 100%;
+    max-width: 450px;          /* responsive width */
+    text-align: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;                 /* space between form elements */
+}
+
+/* HEADINGS */
+h1 {
+    margin-bottom: 25px;
+    font-size: 26px;
+    color: #1f2937;
+}
+
+/* FORM STYLING */
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+/* INPUT FIELDS */
+input[type="number"] {
+    width: 90%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: #4e73df;
+    outline: none;
+    box-shadow: 0 0 6px rgba(78,115,223,0.4);
+}
+
+/* BUTTONS */
+button[type="submit"] {
+    width: 50%;
+    padding: 12px;
+    border: none;
+    background: #0684fb;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background: #00c6ff;
+}
+
+/* BACK BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 22px;
+    background: #6b7280;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background: #374151;
+}
+
+/* RESULT DISPLAY */
+.result {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4facfe;
+    margin: 20px 0;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+    color: #4facfe;
+    font-weight: bold;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 480px) {
+    .container {
+        padding: 30px 20px;
+        width: 90%;
+    }
+
+    button[type="submit"] {
+        width: 70%;
+    }
+
+    input[type="number"] {
+        width: 95%;
+    }
+}
