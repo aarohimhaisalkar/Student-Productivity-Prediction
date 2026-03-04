@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>Prediction Result</h1>
+
+    <p>Your Predicted Productivity Score is:</p>
+    
+    <div class="result">
+        {{ prediction }}
+    </div>
+
+    <a href="/">Predict Again</a>
+    
+    <h3>3 Skills Need To Be Improved:</h3>
+
+<ul>
+    {% for skill in skills %}
+        <li>{{ skill }}</li>
+    {% endfor %}
+</ul>
+
+
+</div>
+
+</body>
+</html>
