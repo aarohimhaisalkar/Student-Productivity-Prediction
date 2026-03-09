@@ -1,72 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Productivity Prediction</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=1.2">
 </head>
+
 <body>
 
-<!-- Toggle Button -->
-<button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <!-- Toggle Button -->
+    <button class="toggle-btn" onclick="toggleSidebar()">⬅</button>
 
-<div class="container">
+    <div class="container">
 
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <h2>🎓 SPP</h2>
-        <a href="{{ url_for('home') }}">Home</a>
-        <a href="#how">How It Works</a>
-        <a href="#features">Features</a>
-        <a href="{{ url_for('show_form') }}">Predict Now</a>
+        <!-- Sidebar -->
+        <div class="sidebar hide" id="sidebar">
+            <h2>🎓 SPP</h2>
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="#how">How It Works</a>
+            <a href="#features">Features</a>
+            <a href="{{ url_for('show_form') }}">Predict Now</a>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content" id="mainContent">
+
+            <!-- Hero Section -->
+            <section class="hero">
+                <h1>Student Productivity Prediction System</h1>
+                <p>AI-powered system that predicts student productivity using Machine Learning.</p>
+                <a href="{{ url_for('show_form') }}" class="btn">Get Started</a>
+            </section>
+
+            <!-- How It Works -->
+            <section id="how" class="section">
+                <h2>How It Works</h2>
+                <p>
+                    The system collects behavioral and academic inputs from students,
+                    processes them through a trained ML model, and predicts a productivity score
+                    along with personalized improvement suggestions.
+                </p>
+            </section>
+
+            <!-- Features -->
+            <section id="features" class="section light">
+                <h2>Key Features</h2>
+                <div class="cards">
+                    <div class="card">📊 Data-Based Prediction</div>
+                    <div class="card">🤖 Machine Learning Model</div>
+                    <div class="card">📈 Productivity Score</div>
+                    <div class="card">🎯 Skill Recommendations</div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>© 2026 Student Productivity Prediction System</p>
+                <p>Developed by Aarohi Mhaisalkar</p>
+            </footer>
+
+        </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="main-content" id="mainContent">
+    <script>
+        function toggleSidebar() {
+            let sidebar = document.getElementById("sidebar");
+            let toggleBtn = document.querySelector(".toggle-btn");
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <h1>Student Productivity Prediction System</h1>
-            <p>AI-powered system that predicts student productivity using Machine Learning.</p>
-            <a href="{{ url_for('show_form') }}" class="btn">Get Started</a>
-        </section>
+            sidebar.classList.toggle("hide");
+            document.getElementById("mainContent").classList.toggle("expand");
 
-        <!-- How It Works -->
-        <section id="how" class="section">
-            <h2>How It Works</h2>
-            <p>
-                The system collects behavioral and academic inputs from students,
-                processes them through a trained ML model, and predicts a productivity score
-                along with personalized improvement suggestions.
-            </p>
-        </section>
+            if (sidebar.classList.contains("hide")) {
+                toggleBtn.innerHTML = "➡";
+            } else {
+                toggleBtn.innerHTML = "⬅";
+            }
+        }
 
-        <!-- Features -->
-        <section id="features" class="section light">
-            <h2>Key Features</h2>
-            <div class="cards">
-                <div class="card">📊 Data-Based Prediction</div>
-                <div class="card">🤖 Machine Learning Model</div>
-                <div class="card">📈 Productivity Score</div>
-                <div class="card">🎯 Skill Recommendations</div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>© 2026 Student Productivity Prediction System</p>
-            <p>Developed by Aarohi Mhaisalkar</p>
-        </footer>
-
-    </div>
-</div>
-
-<script>
-function toggleSidebar() {
-    document.getElementById("sidebar").classList.toggle("hide");
-    document.getElementById("mainContent").classList.toggle("expand");
-}
-</script>
+        // Set initial state of the button based on sidebar
+        document.addEventListener("DOMContentLoaded", function () {
+            let sidebar = document.getElementById("sidebar");
+            let toggleBtn = document.querySelector(".toggle-btn");
+            if (sidebar.classList.contains("hide")) {
+                toggleBtn.innerHTML = "➡";
+            }
+        });
+    </script>
 
 </body>
+
 </html>

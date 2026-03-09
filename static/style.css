@@ -32,12 +32,12 @@ body {
     padding: 20px;
     position: fixed;
     top: 0;
-    left: 0;
+    left: -220px;
     transition: 0.3s ease;
 }
 
 .sidebar.hide {
-    left: -220px;
+    left: 0;
 }
 
 .sidebar h2 {
@@ -49,15 +49,16 @@ body {
 .sidebar a {
     display: block;
     text-decoration: none;
-    color: #111827;
+    color: #0684fb;
     padding: 12px;
     margin: 8px 0;
     border-radius: 8px;
     transition: 0.2s ease;
+
 }
 
 .sidebar a:hover {
-    background: #d1d5db;
+    background: transparent;
 }
 
 /* ============================= */
@@ -83,13 +84,13 @@ body {
 /* ============================= */
 
 .main-content {
-    margin-left: 220px;
+    margin-left: 0;
     width: 100%;
     transition: 0.3s ease;
 }
 
 .main-content.expand {
-    margin-left: 0;
+    margin-left: 220px;
 }
 
 /* ============================= */
@@ -104,12 +105,12 @@ body {
 }
 
 .hero h1 {
-    font-size: 36px;
+    font-size: 60px;
     margin-bottom: 15px;
 }
 
 .hero p {
-    font-size: 18px;
+    font-size: 25px;
     margin-bottom: 25px;
 }
 
@@ -138,14 +139,16 @@ body {
 
 .section h2 {
     margin-bottom: 20px;
-    font-size: 28px;
+    font-size: 40px;
 }
 
 .section p {
-    max-width: 700px;
+    max-width: 1000px;
     margin: auto;
-    font-size: 16px;
+    font-size: 30px;
     line-height: 1.6;
+    color: orange;
+
 }
 
 .light {
@@ -165,11 +168,13 @@ body {
 }
 
 .card {
-    background: white;
-    padding: 25px;
-    width: 220px;
+    background: lightblue;
+    padding: 50px;
+    width: 300px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 25px;
+    text-align: center;
 }
 
 
@@ -188,4 +193,84 @@ body {
 .footer p {
     margin: 5px 0;
     font-size: 14px;
+}
+
+/* ============================= */
+/* Responsive Design */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    /* Sidebar as an overlay */
+    .sidebar {
+        left: -220px;
+        z-index: 999;
+    }
+
+    .sidebar.hide {
+        left: 0;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .main-content.expand {
+        margin-left: 0;
+    }
+
+    /* Scaling down typography and spacing */
+    .hero {
+        padding: 100px 20px 60px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 20px;
+    }
+
+    .section {
+        padding: 60px 20px;
+    }
+
+    .section h2 {
+        font-size: 32px;
+    }
+
+    .section p {
+        font-size: 20px;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 320px;
+        padding: 30px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero p {
+        font-size: 18px;
+    }
+
+    .section h2 {
+        font-size: 28px;
+    }
+
+    .section p {
+        font-size: 18px;
+    }
+
+    .card {
+        padding: 20px;
+        font-size: 18px;
+    }
 }

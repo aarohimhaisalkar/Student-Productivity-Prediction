@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=1.2">
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}?v=1.2">
 </head>
+
 <body>
 
-<div class="container">
-    <h1>Prediction Result</h1>
+    <div class="container">
+        <h1>Prediction Result</h1>
 
-    <p>Your Predicted Productivity Score is:</p>
-    
-    <div class="result">
-        {{ prediction }}
+        <p>Your Predicted Productivity Score is:</p>
+
+        <div class="result">
+            {{ prediction }}
+        </div>
+
+        <!-- Update this link to point back to the form page -->
+        <a href="{{ url_for('form_page') }}" class="btn">Predict Again</a>
+
+        <h3>3 Skills Need To Be Improved:</h3>
+
+        <ul>
+            {% for skill in skills %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
     </div>
 
-    <!-- Update this link to point back to the form page -->
-    <a href="{{ url_for('form_page') }}" class="btn">Predict Again</a>
-    
-    <h3>3 Skills Need To Be Improved:</h3>
-
-    <ul>
-        {% for skill in skills %}
-            <li>{{ skill }}</li>
-        {% endfor %}
-    </ul>
-</div>
-
 </body>
+
 </html>

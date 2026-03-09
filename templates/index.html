@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Productivity Predictor</title>
-   <head>
-    <title>Student Productivity Predictor</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=1.2">
+    <link rel="stylesheet" href="{{ url_for('static', filename='form.css') }}?v=1.2">
 </head>
-</head>
+
 <body>
 
-<div class="container">
-    <h1>Student Productivity Prediction</h1>
+    <div class="container">
+        <h1>Student Productivity Prediction</h1>
 
-    <form action="{{ url_for('predict') }}" method="POST">
+        <form action="{{ url_for('predict') }}" method="POST">
 
-        <input type="number" name="study_hours" placeholder="Study Hours (0-12)" min="0" max="12" required>
-        <input type="number" name="distraction_level" placeholder="Distraction Level (1-10)" min="1" max="10" required>
-        <input type="number" name="sleep_hours" placeholder="Sleep Hours (0-12)" min="0" max="12" required>
-        <input type="number" name="stress_level" placeholder="Stress Level (1-10)" min="1" max="10" required>
-        <input type="number" name="assignment_completion_rate" placeholder="Assignment Completion (0-100)" min="0" max="100" required>
-        <input type="number" name="class_participation_level" placeholder="Participation Level (1-10)" min="1" max="10" required>
-        <input type="number" name="daily_goal_planning" placeholder="Daily Goal Planning (0/1)" min="0" max="1" required>
+            <input type="number" name="study_hours" placeholder="Study Hours (0-12)" min="0" max="12" required>
+            <input type="number" name="distraction_level" placeholder="Distraction Level (1-10)" min="1" max="10"
+                required>
+            <input type="number" name="sleep_hours" placeholder="Sleep Hours (0-12)" min="0" max="12" required>
+            <input type="number" name="stress_level" placeholder="Stress Level (1-10)" min="1" max="10" required>
+            <input type="number" name="assignment_completion_rate" placeholder="Assignment Completion (0-100)" min="0"
+                max="100" required>
+            <input type="number" name="class_participation_level" placeholder="Participation Level (1-10)" min="1"
+                max="10" required>
+            <input type="number" name="daily_goal_planning" placeholder="Daily Goal Planning (0/1)" min="0" max="1"
+                required>
 
-        <button type="submit">Predict Productivity</button>
-    </form>
+            <button type="submit">Predict Productivity</button>
+        </form>
 
-    {% if prediction_text %}
+        {% if prediction_text %}
         <h2>{{ prediction_text }}</h2>
-    {% endif %}
+        {% endif %}
 
-    <br>
-    <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
-</div>
+        <br>
+        <a href="{{ url_for('home') }}" class="btn">Back to Home</a>
+    </div>
 
 </body>
+
 </html>
