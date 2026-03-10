@@ -2,7 +2,10 @@ from flask import Flask, render_template, request
 import pickle
 import numpy as np
 import os
-from vercel_wsgi import app
+
+app = Flask(__name__, 
+           template_folder='../templates',
+           static_folder='../static')
 
 # Load Trained Model
 model_path = os.path.join(os.path.dirname(__file__), '..', 'student_model.pkl')
@@ -107,3 +110,11 @@ def predict():
         prediction=round(prediction[0], 2),
         skills=skills
     )
+
+# Vercel serverless handler
+if __name__ == "__main__":
+    app.run(debug=True)
+else:
+    # Export for Vercel
+    def handler(event, context):
+        return app(event, context)

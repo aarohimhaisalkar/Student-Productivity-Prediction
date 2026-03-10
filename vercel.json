@@ -1,5 +1,6 @@
 {
   "version": 2,
+  "name": "student-productivity-prediction",
   "builds": [
     {
       "src": "api/index.py",
@@ -8,8 +9,17 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/api/index.py"
+    },
+    {
       "src": "/(.*)",
-      "dest": "api/index.py"
+      "dest": "/api/index.py"
     }
-  ]
+  ],
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 10
+    }
+  }
 }
